@@ -5,7 +5,7 @@ public class EmpWageBuilder {
 	//public static final int NUM_OF_WORKING_DAYS = 2;
 	//public static final int MAX_HRS_IN_MONTH = 10;
 
-public static void calcEmpWage(int empRatePerHr, int numOfDays, int maxHourInMonth) {
+public static void calcEmpWage(String company,int empRatePerHr, int numOfDays, int maxHourInMonth) {
 
 	int empHrs = 0;
 	int totalWorkingDays = 0;
@@ -30,12 +30,12 @@ public static void calcEmpWage(int empRatePerHr, int numOfDays, int maxHourInMon
 	}
 		System.out.println("Total Emp Hours :" + totalEmpHrs);
 		totalEmpWage = totalEmpHrs * empRatePerHr;
-		System.out.println("Total Emp Wage :" + totalEmpWage);
+		System.out.println("Total Emp Wage for Company: "+company+" is :" + totalEmpWage);
 }
 
 public static void main(String[] args) {
 	System.out.println("Welcome to Employee Wage Computation Program on Master Branch");
 
-		calcEmpWage(20,2,10);
+		calcEmpWage("Dmart",20,2,10);
 	}
 }
