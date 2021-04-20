@@ -1,17 +1,24 @@
 public class EmpWageBuilder {
 	public static final int is_FullTime = 1;
 	public static final int is_PartTime = 2;
-	//public static final int EMP_RATE_PER_HOUR = 20;
-	//public static final int NUM_OF_WORKING_DAYS = 2;
-	//public static final int MAX_HRS_IN_MONTH = 10;
 
-public static void calcEmpWage(String company,int empRatePerHr, int numOfDays, int maxHourInMonth) {
+	private final String company;
+	private final int numOfDays;
+	private final int empRatePerHr;
+	private final int maxHourInMonth;
+	private int totalEmpWage;
 
-	int empHrs = 0;
-	int totalWorkingDays = 0;
-	int totalEmpHrs = 0;
-	int totalEmpWage = 0;
+public EmpWageBuilder(String company,int empRatePerHr, int numOfDays, int maxHourInMonth) {
 
+	this.company = company;
+	this.numOfDays = numOfDays;
+	this.empRatePerHr = empRatePerHr;
+	this.maxHourInMonth = maxHourInMonth;
+}
+
+public void computeEmpWage(){
+
+	int empHrs = 0, totalEmpHrs = 0, totalWorkingDays = 0;
 	while( totalEmpHrs < maxHourInMonth & totalWorkingDays < numOfDays) {
 			totalWorkingDays++;
 			int empCheck = (int)Math.floor(Math.random() * 10) % 3;
@@ -30,12 +37,25 @@ public static void calcEmpWage(String company,int empRatePerHr, int numOfDays, i
 	}
 		System.out.println("Total Emp Hours :" + totalEmpHrs);
 		totalEmpWage = totalEmpHrs * empRatePerHr;
-		System.out.println("Total Emp Wage for Company: "+company+" is :" + totalEmpWage);
+}
+
+@Override
+public String toString() {
+	return "Total Emp Wage for Company: " +company+ " is: " + totalEmpWage;
 }
 
 public static void main(String[] args) {
 	System.out.println("Welcome to Employee Wage Computation Program on Master Branch");
 
-		calcEmpWage("Dmart",20,2,10);
+		EmpWageBuilder dMart = new EmpWageBuilder("Dmart",20,2,10);
+		EmpWageBuilder reLiance = new EmpWageBuilder("Reliance",20,4,10);
+
+		dMart.computeEmpWage();
+		System.out.println(dMart);
+
+		System.out.println("--------------------------");
+
+		reLiance.computeEmpWage();
+		System.out.println(reLiance);
 	}
 }
